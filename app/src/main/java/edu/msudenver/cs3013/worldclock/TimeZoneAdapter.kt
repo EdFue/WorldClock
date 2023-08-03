@@ -12,7 +12,6 @@ class TimeZoneAdapter(
 ) : RecyclerView.Adapter<TimeZoneViewHolder>() {
     val swipeToDeleteCallback = SwipeToDeleteCallback()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeZoneViewHolder {
         val view = layoutInflater.inflate(R.layout.item_world_clock, parent, false)
         return TimeZoneViewHolder(view)
@@ -26,7 +25,7 @@ class TimeZoneAdapter(
 
     fun addTimeZones(timeZones: List<TimeData>) {
         this.timeZones.addAll(timeZones)
-        notifyDataSetChanged()
+        notifyItemInserted(this.timeZones.size - 1)
     }
 
     fun removeItem(position: Int) {
@@ -34,13 +33,8 @@ class TimeZoneAdapter(
         notifyItemRemoved(position)
     }
 
-    fun clearTimeZones() {
-        this.timeZones.clear()
-        notifyDataSetChanged()
-    }
-
     inner class SwipeToDeleteCallback :
-        ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,

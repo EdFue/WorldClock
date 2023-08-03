@@ -24,7 +24,6 @@ class WorldClockFragment : Fragment() {
     private lateinit var timeZoneAdapter: TimeZoneAdapter
     private val timeZones = mutableListOf<TimeData>()
 
-
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("https://maps.googleapis.com/")
@@ -58,7 +57,6 @@ class WorldClockFragment : Fragment() {
         }
 
         fetchTimeZoneData("39.6606,-104.7922", System.currentTimeMillis() / 1000L)
-
 
         return view
     }
