@@ -66,7 +66,7 @@ class WorldClockFragment : Fragment() {
             val response = timeZoneApi.getTimeZone(
                 location,
                 timestamp,
-                "AIzaSyAkFDNJKIajqqpYP6i8P3sHwTMj2VGmK5o"
+                "GOOGLE API"
             )
             if (response.isSuccessful) {
                 response.body()?.let { timeData ->
